@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Finance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>My Finance</h1>
+
+        <div class="summary">
+            <div class="card">
+                <h3>Balance</h3>
+                <p>₱{{ "%.2f"|format(balance) }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Income</h3>
+                <p>₱{{ "%.2f"|format(total_income) }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Expenses</h3>
+                <p>₱{{ "%.2f"|format(total_expenses) }}</p>
+            </div>
+        </div>
+
+        <a class="button" href="{{ url_for('add_transaction') }}">
+            + Add Transaction
+        </a>
+
+        <h2>Transactions</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Account</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction["date"] }}</td>
+                    <td>{{ transaction["type"] }}</td>
+                    <td>{{ transaction["category"] }}</td>
+                    <td>{{ transaction["description"] }}</td>
+                    <td>{{ transaction["account"] }}</td>
+                    <td>₱{{ "%.2f"|format(transaction["amount"]) }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6">
+                        No transactions yet.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
