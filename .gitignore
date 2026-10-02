@@ -1,0 +1,41 @@
+# Dependencies and generated output
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Local configuration and key material
+.env*
+!.env.example
+*.pem
+*.key
+
+# Browser artifacts
+playwright-report/
+test-results/
+
+# Private data and recoverable local archives
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.dump
+*.bundle
+*.sql
+!database/schema.sql
+*.sql.gz
+*.sql.zip
+backups/
+
+# Legacy Python/generated local files
+venv/
+__pycache__/
+*.pyc
+*.log
+.DS_Store
+Thumbs.db
